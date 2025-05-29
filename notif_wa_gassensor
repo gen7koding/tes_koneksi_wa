@@ -7,8 +7,8 @@
 #define GAS_SENSOR_PIN A0       // Sensor MQ-2 di A0
 #define BUZZER_PIN 14           
 // #define LCD_ADDR 0x27           // Alamat LCD I2C jika menggunakan LCD hapus tanda '//' dibagian paling depan
-#define LED_MERAH 12
-#define LED_HIJAU 13
+#define LED_MERAH 5 // GPIO5 alias D1
+#define LED_HIJAU 4 //GPIO4 alias D2
 
 // -LiquidCrystal_PCF8574 lcd(LCD_ADDR);- jika menggunakan LCD I2C
 
