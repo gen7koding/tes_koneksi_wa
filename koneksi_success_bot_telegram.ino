@@ -6,9 +6,9 @@
 const char* ssid = "TP-Link_39EA";
 const char* password = "64123127";
 
-// GANTI DUA HAL INI SESUAI PUNYAMU
-#define BOTtoken "7706746366:AAGcHqikggOZ4tEgCXVSxegPZ65T4FV4vKE"
-#define CHAT_ID "886969160"
+// Ganti dua poin di bawah ini yang sesuai
+#define BOTtoken "7706xxxx:xxxxxxxxxx" 
+#define CHAT_ID "886xxxx"
 
 WiFiClientSecure client;
 UniversalTelegramBot bot(BOTtoken, client);
