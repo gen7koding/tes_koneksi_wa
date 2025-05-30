@@ -15,8 +15,8 @@
 char ssid[] = "S24+Gen7"; //ganti ssid wifi yang tersedia
 char pass[] = "kursusgen7"; //ganti password wifi aktif
 
-String nomorAdmin = "6281224807733";  
-String apiKeyAdmin = "8457633"; // masukkan key API yang dikirim bot
+String nomorAdmin = "628122xxxx";  
+String apiKeyAdmin = "84xxxx"; // masukkan key API yang dikirim bot
 bool sudahKirim = false;
 
 void setup() {
