@@ -1,22 +1,22 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 #include <Wire.h>
-#include <LiquidCrystal_PCF8574.h>
+//#include <LiquidCrystal_PCF8574.h>
 #include <ESP8266HTTPClient.h>
 
 #define GAS_SENSOR_PIN A0       // Sensor MQ-2 di A0
-#define BUZZER_PIN 14           
+#define BUZZER_PIN 14     //GPIO14       
 // #define LCD_ADDR 0x27           // Alamat LCD I2C jika menggunakan LCD hapus tanda '//' dibagian paling depan
 #define LED_MERAH 5 // GPIO5 alias D1
 #define LED_HIJAU 4 //GPIO4 alias D2
 
 // -LiquidCrystal_PCF8574 lcd(LCD_ADDR);- jika menggunakan LCD I2C
 
-char ssid[] = "xxxxxxx"; //ganti ssid wifi yang tersedia
+char ssid[] = "S24+Gen7"; //ganti ssid wifi yang tersedia
 char pass[] = "kursusgen7"; //ganti password wifi aktif
 
-String nomorAdmin = "62xxxxxx";  
-String apiKeyAdmin = "84576xx"; // masukkan key API yang dikirim bot
+String nomorAdmin = "6281224807733";  
+String apiKeyAdmin = "8457633"; // masukkan key API yang dikirim bot
 bool sudahKirim = false;
 
 void setup() {
@@ -53,10 +53,11 @@ void setup() {
   } else {
     Serial.println("\n❌ Gagal konek WiFi!");
   }
-
+/*
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Monitoring Gas...");
+*/
 }
 
 void loop() {
@@ -90,8 +91,8 @@ void loop() {
     digitalWrite(BUZZER_PIN, LOW);
     digitalWrite(LED_MERAH, LOW);
     digitalWrite(LED_HIJAU, HIGH);
-    lcd.setCursor(0, 0);
-    lcd.print("✅ Gas Aman        ");
+    //lcd.setCursor(0, 0);
+    //lcd.print("✅ Gas Aman        ");
     sudahKirim = false;
   }
 
