@@ -1,19 +1,15 @@
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 #include <Wire.h>
-//#include <LiquidCrystal_PCF8574.h>
 #include <ESP8266HTTPClient.h>
 
 #define GAS_SENSOR_PIN A0       // Sensor MQ-2 di A0
 #define BUZZER_PIN 14     //GPIO14       
-// #define LCD_ADDR 0x27           // Alamat LCD I2C jika menggunakan LCD hapus tanda '//' dibagian paling depan
 #define LED_MERAH 5 // GPIO5 alias D1
 #define LED_HIJAU 4 //GPIO4 alias D2
 
-// -LiquidCrystal_PCF8574 lcd(LCD_ADDR);- jika menggunakan LCD I2C
-
 char ssid[] = "S24+Gen7"; //ganti ssid wifi yang tersedia
-char pass[] = "kursusgen7"; //ganti password wifi aktif
+char pass[] = "xxxxxxxx"; //ganti password wifi aktif
 
 String nomorAdmin = "628122xxxx";  
 String apiKeyAdmin = "84xxxx"; // masukkan key API yang dikirim bot
@@ -28,15 +24,7 @@ void setup() {
   digitalWrite(BUZZER_PIN, LOW);
   pinMode(LED_MERAH, OUTPUT);
   pinMode(LED_HIJAU, OUTPUT);
-  
-  /*
-  lcd.begin(16, 2);
-  lcd.setBacklight(1);
-  lcd.setCursor(0, 0);
-  lcd.print("Preheating MQ-2");
-  lcd.setCursor(0, 1);
-  lcd.print("Tunggu 10 detik");
-  */
+
   delay (10000); // pemanasan sensor gas
   WiFi.begin(ssid, pass);
   Serial.print("Menghubungkan WiFi");
@@ -53,19 +41,11 @@ void setup() {
   } else {
     Serial.println("\n❌ Gagal konek WiFi!");
   }
-/*
-  lcd.clear();
-  lcd.setCursor(0, 0);
-  lcd.print("Monitoring Gas...");
-*/
 }
 
 void loop() {
   int gasValue = analogRead(GAS_SENSOR_PIN);
   Serial.println("Gas Value: " + String(gasValue));
-
-  //lcd.setCursor(0, 1);
-  //lcd.print("Gas: " + String(gasValue) + "    "); 
 
   if (gasValue > 900) { // batas nilai dapat di ganti
     // Alarm aktif
@@ -78,8 +58,6 @@ void loop() {
 
     digitalWrite(LED_MERAH, HIGH);
     digitalWrite(LED_HIJAU, LOW);
-    // lcd.setCursor(0, 0); jika menggunakan lcd
-    // lcd.print("🚨 Gas Terdeteksi!"); jika menggunakan LCD
 
     if (!sudahKirim) {
       String pesan = "🚨 Alarm Gas! Kebocoran gas terdeteksi. Segera periksa!";
@@ -91,11 +69,8 @@ void loop() {
     digitalWrite(BUZZER_PIN, LOW);
     digitalWrite(LED_MERAH, LOW);
     digitalWrite(LED_HIJAU, HIGH);
-    //lcd.setCursor(0, 0);
-    //lcd.print("✅ Gas Aman        ");
     sudahKirim = false;
   }
-
   delay(1000);
 }
 
